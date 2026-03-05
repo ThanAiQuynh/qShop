@@ -1,7 +1,8 @@
 import { pgTable, serial, varchar, text, integer, pgEnum, timestamp } from 'drizzle-orm/pg-core';
 import { brands } from './brands';
+import { ProductStatus } from 'src/common/constants/product-status.enum';
 
-export const productStatusEnum = pgEnum('product_status', ['active', 'draft']);
+export const productStatusEnum = pgEnum('product_status', [ProductStatus.ACTIVE, ProductStatus.DRAFT]);
 
 export const products = pgTable('products', {
     id: serial('id').primaryKey(),
@@ -11,7 +12,7 @@ export const products = pgTable('products', {
         .notNull()
         .references(() => brands.id),
     description: text('description'),
-    status: productStatusEnum('status').default('draft').notNull(),
+    status: productStatusEnum('status').default(ProductStatus.DRAFT).notNull(),
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
     deletedAt: timestamp('deleted_at'),
