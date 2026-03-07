@@ -1,14 +1,20 @@
-export * from './brands';
-export * from './categories';
-export * from './attributes';
-export * from './attribute_values';
-export * from './products';
-export * from './product_variants';
-export * from './variant_attributes';
-export * from './product_categories';
-export * from './product_images';
-export * from './product_facets';
-export * from './product_filter_index';
-export * from './variant_flattened';
-export * from './price_history';
-export * from './product_archives';
+/**
+ * Schema barrel export
+ *
+ * Nhóm các bảng theo chức năng:
+ *  - brands            → brands
+ *  - products          → products, product_images, product_archives
+ *  - categories        → categories, product_categories
+ *  - attributes        → attributes, attribute_values
+ *  - variants          → product_variants, variant_attributes, variant_flattened
+ *  - filters           → product_facets, product_filter_index
+ *  - price-history     → price_history
+ */
+
+export * from './brands.schema';
+export * from './products.schema';
+export * from './categories.schema';
+export * from './attributes.schema';
+export * from './variants.schema';
+export * from './filters.schema';
+export * from './price-history.schema';

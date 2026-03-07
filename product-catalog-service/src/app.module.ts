@@ -8,7 +8,6 @@ import { HealthModule } from './api/v1/health/health.module';
 
 import configuration from './config/configuration';
 import { envValidationSchema } from './config/env.validation';
-import { ProductModule } from './api/v1/product/product.module';
 
 @Module({
   imports: [
@@ -18,8 +17,6 @@ import { ProductModule } from './api/v1/product/product.module';
       validationSchema: envValidationSchema,
     }),
     WinstonModule.forRoot(loggerConfig),
-    HealthModule,
-    ProductModule,
     CacheModule.registerAsync({
       isGlobal: true,
       inject: [ConfigService],
@@ -29,6 +26,7 @@ import { ProductModule } from './api/v1/product/product.module';
         ttl: 3600,
       }),
     }),
+    HealthModule,
   ],
 })
 export class AppModule { }
