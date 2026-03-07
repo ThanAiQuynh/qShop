@@ -8,6 +8,7 @@ import { HealthModule } from './api/v1/health/health.module';
 
 import configuration from './config/configuration';
 import { envValidationSchema } from './config/env.validation';
+import { ProductModule } from './api/v1/product/product.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { envValidationSchema } from './config/env.validation';
       }),
     }),
     HealthModule,
+    ProductModule,
   ],
 })
 export class AppModule { }
